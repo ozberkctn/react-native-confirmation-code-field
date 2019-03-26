@@ -91,7 +91,7 @@ export const getCellStyle = (props: Props, { isActive }: Options) => {
     borderRadius: variant === 'border-circle' ? size / 2 : 0,
 
     width: size,
-    height: size,
+    height: props.cellSize,
 
     ...getBorderWidthStyle(props),
     ...getInputSpaceStyle(props),
