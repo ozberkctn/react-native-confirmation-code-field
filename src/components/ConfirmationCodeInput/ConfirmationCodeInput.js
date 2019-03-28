@@ -154,13 +154,8 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
   getCodeSymbols(): Array<string> {
     const { codeLength } = this.props;
     const { codeValue } = this.state;
-    if(!I18nManager.isRtl){
-      return codeValue
-          .split('')
-      .concat(new Array(codeLength).fill(''))
-      .slice(0, codeLength);
-    }
-    else{
+    
+    if(I18nManager.isRTL){
       const newArr = [];
       codeValue.split('').map(value=>{
       newArr.unshift(value);
@@ -171,8 +166,14 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
           }
       }
       return newArr;
+      
     }
-    
+    else{
+      return codeArray = codeValue
+      .split('')
+      .concat(new Array(codeLength).fill(''))
+      .slice(0, codeLength);
+    }
     
   }
 
@@ -208,7 +209,6 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
 
   findIndex(locationX: number, locationY: number): number {
     // $FlowFixMe
-    debugger;
     // for (const [index, { x, y, xEnd, yEnd }] of Object.entries(
     //   this.cellsLayouts,
     // )) {
@@ -226,7 +226,6 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
 
   handlerOnPress = ({ nativeEvent: { locationX, locationY } }: PressEvent) => {
     const index = this.findIndex(locationX, locationY);
-    debugger;
     if (index !== -1) {
       this.handlerOnTextChange(this.state.codeValue.slice(0, index));
     }
