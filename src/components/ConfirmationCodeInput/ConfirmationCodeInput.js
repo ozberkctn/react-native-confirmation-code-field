@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent, createRef } from 'react';
-import { View, TextInput as TextInputNative } from 'react-native';
+import { View, TextInput as TextInputNative,Dimensions,I18nManager } from 'react-native';
 
 import { concatStyles } from '../../styles';
 
@@ -15,6 +15,8 @@ import type {
   LayoutEvent,
   PressEvent,
 } from 'react-native/Libraries/Types/CoreEventTypes';
+
+const screenWidth = Dimensions.get("screen").width;
 
 class ConfirmationCodeInput extends PureComponent<Props, State> {
   static defaultProps = {
@@ -152,11 +154,26 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
   getCodeSymbols(): Array<string> {
     const { codeLength } = this.props;
     const { codeValue } = this.state;
-
-    return codeValue
-      .split('')
+    if(!I18nManager.isRtl){
+      return codeValue
+          .split('')
       .concat(new Array(codeLength).fill(''))
       .slice(0, codeLength);
+    }
+    else{
+      const newArr = [];
+      codeValue.split('').map(value=>{
+      newArr.unshift(value);
+      });
+      if(codeValue.length != codeLength){
+          for(let i = 0; i<codeLength - codeValue.length;i++ ){
+            newArr.push("");
+          }
+      }
+      return newArr;
+    }
+    
+    
   }
 
   blur() {
@@ -191,24 +208,25 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
 
   findIndex(locationX: number, locationY: number): number {
     // $FlowFixMe
-    for (const [index, { x, y, xEnd, yEnd }] of Object.entries(
-      this.cellsLayouts,
-    )) {
-      if (
-        x < locationX &&
-        locationX < xEnd &&
-        (y < locationY && locationY < yEnd)
-      ) {
-        return parseInt(index, 10);
-      }
-    }
-
+    debugger;
+    // for (const [index, { x, y, xEnd, yEnd }] of Object.entries(
+    //   this.cellsLayouts,
+    // )) {
+    //   if (
+    //     x < locationX &&
+    //     locationX < xEnd &&
+    //     (y < locationY && locationY < yEnd)
+    //   ) {
+    //     return parseInt(index, 10);
+    //   }
+    // }
+    return 0;
     return -1;
   }
 
   handlerOnPress = ({ nativeEvent: { locationX, locationY } }: PressEvent) => {
     const index = this.findIndex(locationX, locationY);
-
+    debugger;
     if (index !== -1) {
       this.handlerOnTextChange(this.state.codeValue.slice(0, index));
     }
