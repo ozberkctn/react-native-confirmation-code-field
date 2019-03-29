@@ -1,6 +1,6 @@
 // @flow
 import { StyleSheet } from 'react-native';
-
+import {fonts} from '../../../../../utils';
 import { concatStyles } from '../../styles';
 
 import type { Props } from './types';
@@ -82,7 +82,7 @@ export const getCellStyle = (props: Props, { isActive }: Options) => {
 
   return {
     color: activeColor,
-    fontSize: clampMin(MIN_FONT_SIZE, 0.5 * size),
+    fontSize: fontSize: fonts["18"],
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
