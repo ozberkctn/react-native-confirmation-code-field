@@ -82,7 +82,7 @@ export const getCellStyle = (props: Props, { isActive }: Options) => {
 
   return {
     color: activeColor,
-    fontSize: fontSize: fonts["18"],
+    fontSize: fonts["18"],
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
