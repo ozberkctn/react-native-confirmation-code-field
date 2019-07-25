@@ -4,8 +4,6 @@ import {fonts} from '../../../../../utils';
 import { concatStyles } from '../../styles';
 
 import type { Props } from './types';
-import {theme} from '../../../../../components/GlobalStyles';
-
 export const styles = StyleSheet.create({
   maskInput: {
     // Invisible TextInput on top of all container component
@@ -82,11 +80,11 @@ export const getCellStyle = (props: Props, { isActive }: Options) => {
   const { size, inactiveColor, activeColor, variant } = props;
 
   return {
-    fontFamily: theme.font.hkGroteskBold,
+    fontFamily: 'HKGrotesk-SemiBold',
     fontSize: 30,
     letterSpacing: 0,
     textAlign: 'center',
-    color: theme.color.black87,
+    color: 'rgba(0, 0, 0, 0.87)',
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: isActive ? activeColor : inactiveColor,
