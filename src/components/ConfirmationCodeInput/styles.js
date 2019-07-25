@@ -4,6 +4,7 @@ import {fonts} from '../../../../../utils';
 import { concatStyles } from '../../styles';
 
 import type { Props } from './types';
+import {theme} from '../../../../../components/GlobalStyles';
 
 export const styles = StyleSheet.create({
   maskInput: {
@@ -81,15 +82,15 @@ export const getCellStyle = (props: Props, { isActive }: Options) => {
   const { size, inactiveColor, activeColor, variant } = props;
 
   return {
-    color: activeColor,
-    fontSize: fonts["18"],
+    fontFamily: theme.font.hkGroteskBold,
+    fontSize: 30,
+    letterSpacing: 0,
+    textAlign: 'center',
+    color: theme.color.black87,
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign: 'center',
-
     borderColor: isActive ? activeColor : inactiveColor,
-    borderRadius: variant === 'border-circle' ? size / 2 : 0,
-
+    borderRadius: 8,
     width: size,
     height: props.cellSize,
 
