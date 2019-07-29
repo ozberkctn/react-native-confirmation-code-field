@@ -80,8 +80,8 @@ export const getCellStyle = (props: Props, { isActive }: Options) => {
   const { size, inactiveColor, activeColor, variant } = props;
 
   return {
-    fontFamily: props.fontFamily ? props.fontFamily : clampMin(MIN_FONT_SIZE, 0.5 * size),
-    fontSize: 30,
+    fontFamily: props.fontFamily,
+    fontSize: props.fontSize ? props.fontSize : clampMin(MIN_FONT_SIZE, 0.5 * size),
     letterSpacing: 0,
     textAlign: 'center',
     color: 'rgba(0, 0, 0, 0.87)',
