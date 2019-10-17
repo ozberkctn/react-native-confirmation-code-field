@@ -1,6 +1,5 @@
 // @flow
 import { StyleSheet } from 'react-native';
-import {fonts} from '../../../../../utils';
 import { concatStyles } from '../../styles';
 
 import type { Props } from './types';
