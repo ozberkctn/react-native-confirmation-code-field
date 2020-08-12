@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent, createRef } from 'react';
 import { View, TextInput as TextInputNative,Dimensions,I18nManager } from 'react-native';
+import { setTestID } from '../../../../../src/helper/utils';
 
 import { concatStyles } from '../../styles';
 
@@ -245,6 +246,7 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
     return (
       <TextInputCustom
         // $FlowFixMe
+        {...setTestID('verification_code_text_input')}
         ref={this._input}
         maxLength={codeLength}
         {...inputProps}
